@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创作档案馆 · Personal Art Archive</title>
+<meta name="description" content="一座收纳创作草稿、试错记录、艺术理论摘抄、灵感素材与学习手记的个人艺术档案馆。">
+
+<!-- 内联 SVG 图标：避免额外文件请求，离线可用 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f5f4'/%3E%3Crect x='8' y='8' width='16' height='16' fill='none' stroke='%236b7f8c' stroke-width='1.2'/%3E%3Cline x1='8' y1='24' x2='24' y2='8' stroke='%23a8afb0' stroke-width='0.8'/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     移动端顶栏（仅小屏显示，由 CSS 控制）
+     ============================================================ -->
+<div class="mobile-bar">
+  <span class="mb-name" id="mbName">—</span>
+  <button class="mb-btn" id="mbToggle" type="button">目录 MENU</button>
+</div>
+
+<!-- ============================================================
+     三维场景固定层（首页背景）
+     作为 body 的直接子元素，位于 .shell（z-index:3）之下。
+     仅首页显示：通过 body.is-home 控制；滚动时按 --p 收束。
+     ============================================================ -->
+<div class="hero3d" id="hero3d" aria-label="藏式建筑群三维模型"></div>
+
+<div class="shell">
+
+  <!-- ============================================================
+       统一导航侧栏
+       导航项由 app.js 的 NAV 配置动态生成，无需在此手写
+       ============================================================ -->
+  <aside class="rail" id="rail">
+    <div class="rail-mark">
+      <span class="rail-name">—</span>
+      <span class="rail-sub">—</span>
+    </div>
+    <div class="rail-est">—</div>
+
+    <ul class="nav" id="navList"></ul>
+
+    <div class="rail-foot">
+      <div>归档持续进行中</div>
+      <div><a id="railMail" href="mailto:hello@example.com">—</a></div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       主内容区
+       所有视图由 app.js 根据 location.hash 渲染进来
+       ============================================================ -->
+  <main class="main" id="app"></main>
+
+</div>
+
+<!-- ============================================================
+     脚本：顺序不可颠倒
+       data.js —— 数据（window.ARCHIVE）
+       app.js  —— 渲染逻辑
+     两者均为普通脚本（非 ES Module），因此可直接双击
+     以 file:// 协议打开，无需服务器与网络。
+     ============================================================ -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
